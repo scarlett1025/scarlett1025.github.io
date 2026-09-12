@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>給你的話</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #fffcf2 0%, #f2e8d5 100%);
+    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    padding: 24px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .confetti {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.55;
+  }
+
+  .card {
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 48px 32px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(95, 115, 85, 0.15);
+    border: 1px solid #eadfc9;
+  }
+
+  .heart {
+    font-size: 36px;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: beat 1.6s ease-in-out infinite;
+  }
+
+  @keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  .message {
+    font-size: 21px;
+    line-height: 1.9;
+    color: #5f7355;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    white-space: pre-line;
+  }
+
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: #c9a66b;
+    margin: 28px auto;
+    border-radius: 999px;
+  }
+
+  .signature {
+    font-size: 14px;
+    color: #a67c3d;
+    letter-spacing: 1px;
+  }
+
+  .number {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 12px;
+    color: #cbbfa0;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="number" id="numTag"></span>
+    <div class="heart">💌</div>
+    <p class="message" id="msgText">儘管世界破破爛爛，還有我為妳縫縫補補❤️</p>
+    <div class="divider"></div>
+    <p class="signature">— 生日快樂 —</p>
+  </div>
+
+  <script>
+    const messages = [
+      "儘管世界破破爛爛，還有我為妳縫縫補補❤️",
+      "是哪個女人這麼漂亮自信又幽默風趣呀～是妳！",
+      "別對自己太過嚴苛，一切都只是體驗，開心最重要！",
+      "江阿君又惹妳生氣了嗎？她不是故意的，只是太愛妳了，要原諒她哦ㄎㄎ",
+      "不需要堅強，不夠完美也沒關係，累了的話記得看看身邊的我！",
+      "我比妳還相信妳自己，所以支持妳做的任何決定！",
+      "我愛妳，所以別害怕。",
+      "好好的過好當下，煩惱留給以後，丟給江阿君分擔也可以嘿嘿。",
+      "祝兩百多個月大的寶寶，永遠開心、永遠快樂。",
+      "有妳在的地方就是我想待的地方，哪裡也不去。",
+      "今天也有好好愛自己嗎？沒有的話我這份借妳！",
+      "辛苦啦！妳已經做得很好了哦！"
+    ];
+
+    const params = new URLSearchParams(window.location.search);
+    let n = parseInt(params.get("msg"), 10);
+    if (!n || n < 1 || n > messages.length) n = 1;
+
+    document.getElementById("msgText").textContent = messages[n - 1];
+    document.getElementById("numTag").textContent = n + " / " + messages.length;
+
+    const colors = ["#C9A66B", "#9CAF88", "#F2E8D5", "#5F7355"];
+    for (let i = 0; i < 24; i++) {
+      const dot = document.createElement("div");
+      dot.className = "confetti";
+      const size = Math.random() * 10 + 6;
+      dot.style.width = size + "px";
+      dot.style.height = size + "px";
+      dot.style.left = Math.random() * 100 + "vw";
+      dot.style.top = Math.random() * 100 + "vh";
+      dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+      document.body.appendChild(dot);
+    }
+  </script>
+
+</body>
+</html>
