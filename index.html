@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>給你的話</title>
+<title>劉芯芯加油站</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -73,20 +73,11 @@
     letter-spacing: 1px;
   }
 
-  .number {
-    position: absolute;
-    top: 16px;
-    right: 20px;
-    font-size: 12px;
-    color: #cbbfa0;
-    letter-spacing: 1px;
-  }
 </style>
 </head>
 <body>
 
   <div class="card">
-    <span class="number" id="numTag"></span>
     <div class="heart">💌</div>
     <p class="message" id="msgText">儘管世界破破爛爛，還有我為妳縫縫補補❤️</p>
     <div class="divider"></div>
@@ -114,7 +105,6 @@
     if (!n || n < 1 || n > messages.length) n = 1;
 
     document.getElementById("msgText").textContent = messages[n - 1];
-    document.getElementById("numTag").textContent = n + " / " + messages.length;
 
     const colors = ["#C9A66B", "#9CAF88", "#F2E8D5", "#5F7355"];
     for (let i = 0; i < 24; i++) {
@@ -126,7 +116,7 @@
       dot.style.left = Math.random() * 100 + "vw";
       dot.style.top = Math.random() * 100 + "vh";
       dot.style.background = colors[Math.floor(Math.random() * colors.length)];
-      document.body.appendChild(dot); 
+      document.body.appendChild(dot);
     }
   </script>
 
